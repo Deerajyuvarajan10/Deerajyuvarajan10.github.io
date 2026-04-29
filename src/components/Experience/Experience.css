@@ -178,6 +178,14 @@
     padding: 8px;
     border-radius: 8px;
   }
+  
+  .flip-card-container {
+    height: 320px;
+  }
+  
+  .flip-card-front, .flip-card-back {
+    padding: 20px;
+  }
 }
 
 .flip-card-back h4 {
