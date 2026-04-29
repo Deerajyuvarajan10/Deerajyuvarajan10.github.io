@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import './Experience.css';
 
@@ -62,9 +62,24 @@ const ExperienceNode = ({ exp }: { exp: ExperienceData }) => {
 const Experience = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Create a horizontal scroll effect based on vertical scroll if we want,
-  // but standard CSS horizontal scroll is requested ("Horizontal scrollable timeline (drag or scroll)")
-  // We'll use CSS `overflow-x: auto` for simplicity and standard UX.
+  // Enable horizontal scrolling with vertical mouse wheel
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // If the event is strictly vertical (no horizontal component), 
+      // map it to horizontal scroll
+      if (e.deltaY !== 0 && e.deltaX === 0) {
+        // Prevent default vertical scrolling when hovering over timeline
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+      }
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => container.removeEventListener('wheel', handleWheel);
+  }, []);
 
   return (
     <section id="experience" className="experience-section section-container">
