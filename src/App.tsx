@@ -18,6 +18,16 @@ function App() {
   const [currentSection, setCurrentSection] = useState('hero');
   const isPartyTime = useEasterEgg();
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Handle window resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Simple loading screen
   useEffect(() => {
@@ -58,10 +68,12 @@ function App() {
     <>
       <CustomCursor />
       
-      {/* If easter egg triggered, pass a prop or class to make DEX dance */}
-      <div className={isPartyTime ? 'party-mode' : ''}>
-        <DexRobot currentSection={isPartyTime ? 'party' : currentSection} />
-      </div>
+      {/* If easter egg triggered, pass a prop or class to make DEX dance. Hide entirely on mobile. */}
+      {!isMobile && (
+        <div className={isPartyTime ? 'party-mode' : ''}>
+          <DexRobot currentSection={isPartyTime ? 'party' : currentSection} />
+        </div>
+      )}
 
       {isPartyTime && (
         <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 9999, color: '#FFD700', fontSize: '2rem', textAlign: 'center', pointerEvents: 'none', textShadow: '0 0 20px #FFD700' }}>
