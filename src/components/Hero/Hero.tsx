@@ -135,17 +135,20 @@ const Hero = () => {
             <h2 className="subtitle">
               &gt; <span className="typewriter">{typewriterText}</span><span className="cursor">|</span>
             </h2>
+            <h3 className="hero-subheading">
+              AI Developer | Building Scalable ML & Web Applications
+            </h3>
             <p className="hero-desc">
-              Bridging the gap between complex algorithms and elegant user experiences.
+              Specialized in NLP, React, and 3D Web Experiences.
             </p>
             
             <div className="hero-cta-group">
               <a href="#projects" className="cta-button">
-                <span>EXPLORE MY UNIVERSE</span>
+                <span>VIEW PROJECTS</span>
                 <span className="arrow">→</span>
               </a>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-button secondary">
-                <span>VIEW RESUME</span>
+                <span>DOWNLOAD RESUME</span>
               </a>
             </div>
           </motion.div>

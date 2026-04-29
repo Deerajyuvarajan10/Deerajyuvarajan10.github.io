@@ -336,3 +336,78 @@
 .github-link-btn:hover::before {
   left: 0;
 }
+
+@media (max-width: 768px) {
+  .project-full-card {
+    height: 90vh;
+    border-radius: 20px 20px 0 0;
+  }
+  .card-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.project-details {
+  margin: 20px 0;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.project-details p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.project-details strong {
+  color: var(--color-accent);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tech-badge {
+  padding: 5px 12px;
+  border: 1px solid;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.demo-link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: #0A0A0F;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.demo-link-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .project-actions {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+  
+  .demo-link-btn, .github-link-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

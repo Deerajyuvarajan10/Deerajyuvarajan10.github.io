@@ -3,20 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Skills.css';
 
 const skillsData = [
-  // Core orbit (inner)
-  { id: 1, name: 'Python', category: 'core', angle: 0, description: 'Advanced data analysis & backend.' },
-  { id: 2, name: 'ML', category: 'core', angle: 120, description: 'Isolation Forest, predictive modeling.' },
-  { id: 3, name: 'LLMs', category: 'core', angle: 240, description: 'RAG, Gemini integration, Prompt Eng.' },
+  // AI / ML (Inner orbit)
+  { id: 1, name: 'Python', category: 'ai', angle: 0, description: 'Advanced data analysis, NLP & backend.' },
+  { id: 2, name: 'ML Models', category: 'ai', angle: 120, description: 'Predictive modeling & classification.' },
+  { id: 3, name: 'LLMs', category: 'ai', angle: 240, description: 'RAG, prompt engineering, API integration.' },
   
-  // Mid orbit
-  { id: 4, name: 'Flutter', category: 'mid', angle: 45, description: 'Cross-platform mobile apps.' },
-  { id: 5, name: 'React.js', category: 'mid', angle: 165, description: 'Interactive web UI & animations.' },
-  { id: 6, name: 'Node.js', category: 'mid', angle: 285, description: 'Scalable backend services.' },
+  // Frontend (Mid orbit)
+  { id: 4, name: 'React.js', category: 'frontend', angle: 45, description: 'Interactive web UI & state management.' },
+  { id: 5, name: 'Three.js', category: 'frontend', angle: 165, description: '3D Web Experiences & animations.' },
+  { id: 6, name: 'Vite', category: 'frontend', angle: 285, description: 'Lightning-fast build tooling.' },
   
-  // Outer orbit
-  { id: 7, name: 'Docker', category: 'outer', angle: 90, description: 'Containerization & deployment.' },
-  { id: 8, name: 'Git', category: 'outer', angle: 210, description: 'Version control & collaboration.' },
-  { id: 9, name: 'FastAPI', category: 'outer', angle: 330, description: 'High-performance Python APIs.' },
+  // Tools (Outer orbit)
+  { id: 7, name: 'Git/GitHub', category: 'tools', angle: 90, description: 'Version control & team collaboration.' },
+  { id: 8, name: 'Node.js', category: 'tools', angle: 210, description: 'Scalable backend services & APIs.' },
+  { id: 9, name: 'Docker', category: 'tools', angle: 330, description: 'Containerization & deployment.' },
 ];
 
 interface SkillData {
@@ -54,7 +54,7 @@ const Skills = () => {
 
         {/* Skill Orbs */}
         {skillsData.map((skill) => {
-          const orbitRadius = skill.category === 'core' ? 120 : skill.category === 'mid' ? 220 : 320;
+          const orbitRadius = skill.category === 'ai' ? 120 : skill.category === 'frontend' ? 220 : 320;
           const isHovered = hoveredSkill === skill.id;
           
           return (
@@ -86,14 +86,21 @@ const Skills = () => {
 
       {/* Mobile Skills Grid */}
       <div className="mobile-skills-grid hidden-desktop">
-        {skillsData.map(skill => (
-          <div key={skill.id} className={`mobile-skill-card ${skill.category}`} onClick={() => handleOrbClick(skill)}>
-            <div className="skill-icon-placeholder">
-              {skill.name.charAt(0)}
-            </div>
-            <div className="skill-info">
-              <h4>{skill.name}</h4>
-              <span className="orbit-badge">{skill.category} orbit</span>
+        {['ai', 'frontend', 'tools'].map(cat => (
+          <div key={cat} className="skill-category-group">
+            <h3 className="category-title">{cat === 'ai' ? 'AI / ML' : cat === 'frontend' ? 'Frontend' : 'Tools'}</h3>
+            <div className="category-cards">
+              {skillsData.filter(s => s.category === cat).map(skill => (
+                <div key={skill.id} className={`mobile-skill-card ${skill.category}`} onClick={() => handleOrbClick(skill)}>
+                  <div className="skill-icon-placeholder">
+                    {skill.name.charAt(0)}
+                  </div>
+                  <div className="skill-info">
+                    <h4>{skill.name}</h4>
+                    <p className="skill-desc-small">{skill.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}
@@ -117,7 +124,7 @@ const Skills = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <h3>{selectedSkill.name}</h3>
-              <div className="modal-orbit-badge">{selectedSkill.category} orbit</div>
+              <div className="modal-orbit-badge">{selectedSkill.category.toUpperCase()}</div>
               <p>{selectedSkill.description}</p>
               <button className="close-btn" onClick={() => setSelectedSkill(null)}>Close</button>
             </motion.div>

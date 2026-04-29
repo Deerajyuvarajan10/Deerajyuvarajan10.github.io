@@ -11,17 +11,19 @@ const GithubIcon = ({ size = 24 }: { size?: number }) => (
 );
 
 const projects = [
-  { id: 1, title: 'WattWise', desc: 'AI-Based Smart Energy Monitoring App (Flutter + Isolation Forest ML)', color: '#00FF00', theme: 'electric', githubLink: 'https://github.com/Deerajyuvarajan10/Wattwise.git', images: ['/wattwise-1.png', '/wattwise-2.png', '/wattwise-3.png', '/wattwise-4.png', '/wattwise-5.png'] },
-  { id: 2, title: 'MediBot', desc: 'AI Healthcare Assistant (Flutter + Gemini LLM + OCR)', color: '#00F5FF', theme: 'medical', githubLink: 'https://github.com/Deerajyuvarajan10/MediBot.git', images: ['/medibot-1.png', '/medibot-2.png'] },
-  { id: 3, title: 'Smart Plate', desc: 'Food Spoilage Detection Device (IoT Sensors)', color: '#FF8C00', theme: 'sensor', githubLink: 'https://github.com/Deerajyuvarajan10/Smart_Plate.git', images: ['/smartplate-1.jpeg', '/smartplate-2.jpeg'] },
-  { id: 4, title: 'Questify', desc: 'Gamified Task Management Web App (XP system + dashboards)', color: '#8A2BE2', theme: 'gaming', githubLink: 'https://github.com/Deerajyuvarajan10/questify-task-quest.git', images: ['/questify-1.png', '/questify-2.png', '/questify-3.png'] },
-  { id: 5, title: 'Step Tracker', desc: 'Step Tracker App (React Native + Expo + Accelerometer)', color: '#FF1493', theme: 'fitness', githubLink: 'https://github.com/Deerajyuvarajan10/stepTrackerApp.git', images: ['/steptracker-1.jpeg'] }
+  { id: 1, title: 'WattWise', problem: 'High energy consumption goes unnoticed until the bill arrives.', solution: 'Built an AI-based smart energy monitoring app using Isolation Forest ML to detect anomalies.', techStack: ['Flutter', 'Python', 'ML', 'Firebase'], color: '#00FF00', theme: 'electric', githubLink: 'https://github.com/Deerajyuvarajan10/Wattwise.git', images: ['/wattwise-1.png', '/wattwise-2.png', '/wattwise-3.png', '/wattwise-4.png', '/wattwise-5.png'] },
+  { id: 2, title: 'MediBot', problem: 'Patients struggle to understand complex medical reports.', solution: 'Developed an AI Healthcare Assistant using Gemini LLM and OCR to simplify medical data.', techStack: ['Flutter', 'Gemini LLM', 'Node.js', 'OCR'], color: '#00F5FF', theme: 'medical', githubLink: 'https://github.com/Deerajyuvarajan10/MediBot.git', images: ['/medibot-1.png', '/medibot-2.png'] },
+  { id: 3, title: 'Smart Plate', problem: 'Food spoilage leads to health risks and waste.', solution: 'Engineered an IoT-enabled device that detects food spoilage using gas sensors.', techStack: ['IoT', 'Arduino', 'Sensors', 'C++'], color: '#FF8C00', theme: 'sensor', githubLink: 'https://github.com/Deerajyuvarajan10/Smart_Plate.git', images: ['/smartplate-1.jpeg', '/smartplate-2.jpeg'] },
+  { id: 4, title: 'Questify', problem: 'Task management tools lack engagement.', solution: 'Created a gamified task manager with XP, levels, and engaging dashboards.', techStack: ['React', 'Node.js', 'MongoDB', 'Express'], color: '#8A2BE2', theme: 'gaming', githubLink: 'https://github.com/Deerajyuvarajan10/questify-task-quest.git', images: ['/questify-1.png', '/questify-2.png', '/questify-3.png'] },
+  { id: 5, title: 'Step Tracker', problem: 'Basic fitness tracking requires expensive wearables.', solution: 'Built a mobile Step Tracker utilizing built-in device accelerometers.', techStack: ['React Native', 'Expo', 'Sensors'], color: '#FF1493', theme: 'fitness', githubLink: 'https://github.com/Deerajyuvarajan10/stepTrackerApp.git', images: ['/steptracker-1.jpeg'] }
 ];
 
 interface ProjectData {
   id: number;
   title: string;
-  desc: string;
+  problem: string;
+  solution: string;
+  techStack: string[];
   color: string;
   theme: string;
   githubLink: string;
@@ -178,19 +180,20 @@ const Projects = () => {
               </div>
               <div className="card-body">
                 <ImageSlider images={activeProject.images} color={activeProject.color} />
-                <p className="desc">{activeProject.desc}</p>
-                <div className="fake-code-block">
-                  <span className="comment">// Initializing project sequence...</span>
-                  <br />
-                  <span className="keyword">const</span> <span className="variable">system</span> = <span className="keyword">new</span> <span className="class">AIEngine</span>();
-                  <br />
-                  <span className="variable">system</span>.<span className="method">deploy</span>(<span className="string">'{activeProject.title}'</span>);
-                  <br />
-                  <span className="comment">// Status: SUCCESS</span>
+                <div className="project-details">
+                  <p><strong>Problem:</strong> {activeProject.problem}</p>
+                  <p><strong>Solution:</strong> {activeProject.solution}</p>
+                  <div className="tech-stack">
+                    {activeProject.techStack.map((tech, i) => (
+                      <span key={i} className="tech-badge" style={{ borderColor: activeProject.color, color: activeProject.color }}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 
-                {activeProject.githubLink && (
-                  <div className="project-actions">
+                <div className="project-actions">
+                  {activeProject.githubLink && (
                     <a 
                       href={activeProject.githubLink} 
                       target="_blank" 
@@ -198,10 +201,10 @@ const Projects = () => {
                       className="github-link-btn"
                     >
                       <GithubIcon size={20} />
-                      <span>View Repository</span>
+                      <span>View Repo</span>
                     </a>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </motion.div>
           </motion.div>

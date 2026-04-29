@@ -111,8 +111,18 @@
   font-family: var(--font-mono);
   font-size: clamp(1.2rem, 3vw, 2rem);
   color: var(--color-accent);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-weight: 500;
+}
+
+.hero-subheading {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--color-text);
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .cursor {

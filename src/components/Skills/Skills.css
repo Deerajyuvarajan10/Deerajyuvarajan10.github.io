@@ -178,6 +178,62 @@
   display: none;
 }
 
+/* Colors for categories */
+.skill-orb-container.ai .skill-orb, .mobile-skill-card.ai .skill-icon-placeholder {
+  background: rgba(0, 245, 255, 0.1);
+  border-color: #00F5FF;
+  color: #00F5FF;
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.skill-orb-container.frontend .skill-orb, .mobile-skill-card.frontend .skill-icon-placeholder {
+  background: rgba(138, 43, 226, 0.1);
+  border-color: #8A2BE2;
+  color: #8A2BE2;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+}
+
+.skill-orb-container.tools .skill-orb, .mobile-skill-card.tools .skill-icon-placeholder {
+  background: rgba(255, 20, 147, 0.1);
+  border-color: #FF1493;
+  color: #FF1493;
+  box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+}
+
+/* Hover glow effects */
+.skill-orb-container.ai:hover .skill-orb { box-shadow: 0 0 30px #00F5FF; }
+.skill-orb-container.frontend:hover .skill-orb { box-shadow: 0 0 30px #8A2BE2; }
+.skill-orb-container.tools:hover .skill-orb { box-shadow: 0 0 30px #FF1493; }
+
+/* Mobile view grouping */
+.skill-category-group {
+  margin-bottom: 30px;
+}
+
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.category-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skill-desc-small {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 900px) {
   .hidden-mobile {
@@ -216,9 +272,9 @@
     background: rgba(0, 245, 255, 0.1);
   }
 
-  .mobile-skill-card.core { border-color: var(--color-primary); }
-  .mobile-skill-card.mid { border-color: var(--color-nebula); }
-  .mobile-skill-card.outer { border-color: var(--color-accent); }
+  .mobile-skill-card.ai { border-color: #00F5FF; }
+  .mobile-skill-card.frontend { border-color: #8A2BE2; }
+  .mobile-skill-card.tools { border-color: #FF1493; }
 
   .skill-icon-placeholder {
     width: 40px;
@@ -232,10 +288,6 @@
     font-weight: 800;
     font-size: 1.2rem;
   }
-
-  .mobile-skill-card.core .skill-icon-placeholder { color: var(--color-primary); background: rgba(0, 245, 255, 0.1); }
-  .mobile-skill-card.mid .skill-icon-placeholder { color: var(--color-nebula); background: rgba(138, 43, 226, 0.1); }
-  .mobile-skill-card.outer .skill-icon-placeholder { color: var(--color-accent); background: rgba(255, 215, 0, 0.1); }
 
   .skill-info h4 {
     font-size: 1rem;

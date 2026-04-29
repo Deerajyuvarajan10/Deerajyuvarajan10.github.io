@@ -37,6 +37,9 @@ const Contact = () => {
       <div className="section-header">
         <h2 className="text-gradient">Initiate Contact</h2>
         <p>Ping my server. I usually respond within O(1) time.</p>
+        <p className="contact-cta" style={{ marginTop: '15px', color: '#00F5FF', fontWeight: 600, fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+          Open to internships and opportunities!
+        </p>
       </div>
 
       <div className="contact-container">
