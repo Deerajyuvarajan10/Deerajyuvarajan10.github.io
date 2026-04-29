@@ -1,0 +1,329 @@
+.projects-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 5%;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-vault {
+  position: relative;
+  height: 250px;
+  background: var(--color-bg-secondary);
+  border: 2px solid #222;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease;
+}
+
+.project-vault::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-vault:hover {
+  border-color: var(--theme-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--theme-color) inset;
+}
+
+.project-vault:hover::before {
+  opacity: 1;
+}
+
+.vault-door {
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.02) 10px,
+    rgba(255,255,255,0.02) 20px
+  );
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 2;
+}
+
+.vault-lock {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg);
+  transition: all 0.3s ease;
+}
+
+.lock-ring {
+  width: 40px; height: 40px;
+  border: 2px dashed rgba(255,255,255,0.5);
+  border-radius: 50%;
+  animation: spin 10s linear infinite;
+}
+
+.lock-core {
+  position: absolute;
+  width: 15px; height: 15px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+}
+
+.project-vault:hover .vault-door {
+  transform: scale(1.1);
+  opacity: 0;
+}
+
+.project-vault:hover .vault-lock {
+  border-color: var(--theme-color);
+  box-shadow: 0 0 15px var(--theme-color);
+}
+
+.project-vault:hover .lock-core {
+  background: var(--theme-color);
+}
+
+.vault-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.project-vault:hover .vault-content {
+  opacity: 1;
+  transform: translateY(0) translateZ(50px);
+}
+
+.vault-content h3 {
+  color: var(--theme-color);
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px var(--theme-color);
+}
+
+.vault-content p {
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Modal */
+.project-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.project-full-card {
+  background: var(--color-bg-secondary);
+  width: 90%;
+  max-width: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.card-header {
+  padding: 20px 30px;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.card-header h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.close-icon {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.close-icon:hover {
+  opacity: 1;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.image-slider-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+  border-radius: 4px;
+}
+
+.slider-btn:hover {
+  background: rgba(0,0,0,0.9);
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slider-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slider-dots .dot:hover {
+  transform: scale(1.2);
+}
+
+.desc {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.fake-code-block {
+  background: #0A0A0F;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.fake-code-block .comment { color: #6A9955; }
+.fake-code-block .keyword { color: #569CD6; }
+.fake-code-block .variable { color: #9CDCFE; }
+.fake-code-block .class { color: #4EC9B0; }
+.fake-code-block .method { color: #DCDCAA; }
+.fake-code-block .string { color: #CE9178; }
+
+.project-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.github-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--theme-color);
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.github-link-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--theme-color);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.github-link-btn:hover {
+  color: #000;
+  box-shadow: 0 0 20px var(--theme-color);
+  transform: translateY(-2px);
+}
+
+.github-link-btn:hover::before {
+  left: 0;
+}

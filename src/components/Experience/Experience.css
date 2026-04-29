@@ -1,0 +1,216 @@
+.experience-section {
+  position: relative;
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 50px 0 100px;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.timeline-container::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-wire {
+  position: absolute;
+  top: 150px; /* Align with dots */
+  left: 0;
+  width: 150%; /* extend beyond screen */
+  min-width: 1200px;
+  height: 4px;
+  background: rgba(0, 245, 255, 0.2);
+  z-index: 1;
+}
+
+.data-flow {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 20px var(--color-primary), 0 0 40px var(--color-primary);
+  animation: dataFlow 4s linear infinite;
+}
+
+@keyframes dataFlow {
+  0% { left: -100px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.timeline-nodes-wrapper {
+  display: flex;
+  gap: 80px;
+  padding: 0 5vw;
+  position: relative;
+  z-index: 2;
+  width: max-content;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  position: relative;
+}
+
+.heartbeat-dot {
+  width: 24px;
+  height: 24px;
+  background: var(--color-bg);
+  border: 4px solid var(--color-text-muted);
+  border-radius: 50%;
+  margin-bottom: 40px;
+  transition: all 0.3s;
+  z-index: 3;
+}
+
+.heartbeat-dot.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  box-shadow: 0 0 20px var(--color-primary);
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 245, 255, 0.5); }
+  15% { transform: scale(1.3); box-shadow: 0 0 20px rgba(0, 245, 255, 0.8); }
+  30% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 245, 255, 0.5); }
+  45% { transform: scale(1.3); box-shadow: 0 0 20px rgba(0, 245, 255, 0.8); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 245, 255, 0.5); }
+}
+
+/* Flip Card Styles */
+.flip-card-container {
+  width: 100%;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-container:hover .flip-card {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 30px;
+  background: var(--color-bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, var(--color-bg-secondary), rgba(0, 245, 255, 0.1));
+  border-color: var(--color-primary);
+}
+
+.role {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 15px;
+}
+
+.period {
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 15px;
+}
+
+.summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  flex-grow: 1;
+}
+
+.hover-hint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  text-align: right;
+  opacity: 0.7;
+}
+
+.flip-card-back h4 {
+  color: var(--color-accent);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.flip-card-back ul {
+  list-style: none;
+  padding: 0;
+}
+
+.flip-card-back li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding-left: 20px;
+  position: relative;
+}
+
+.flip-card-back li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.future-card {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  padding: 30px;
+  background: transparent;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.future .heartbeat-dot {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+}

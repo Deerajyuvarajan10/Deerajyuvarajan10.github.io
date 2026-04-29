@@ -1,0 +1,26 @@
+:root {
+  /* Color Palette */
+  --color-bg: #0A0A0F;
+  --color-bg-secondary: #12121A;
+  --color-primary: #00F5FF;
+  --color-accent: #FFD700;
+  --color-text: #F0F0FF;
+  --color-text-muted: #A0A0B0;
+  --color-nebula: #8A2BE2; /* Purple nebula */
+
+  /* Typography */
+  --font-heading: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Easings */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-fast: 0.2s var(--ease-smooth);
+  --transition-normal: 0.3s var(--ease-smooth);
+  --transition-slow: 0.5s var(--ease-smooth);
+
+  /* Gradients */
+  --gradient-nebula: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(0, 245, 255, 0.1) 100%);
+  --gradient-holographic: linear-gradient(120deg, #00F5FF, #8A2BE2, #FFD700, #00F5FF);
+}
