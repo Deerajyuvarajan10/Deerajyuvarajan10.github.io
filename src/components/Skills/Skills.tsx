@@ -42,7 +42,7 @@ const Skills = () => {
         <p>My technical universe, organized by orbits.</p>
       </div>
 
-      <div className="solar-system-container">
+      <div className="solar-system-container hidden-mobile">
         <div className="sun">
           <span>AI</span>
         </div>
@@ -82,6 +82,21 @@ const Skills = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Mobile Skills Grid */}
+      <div className="mobile-skills-grid hidden-desktop">
+        {skillsData.map(skill => (
+          <div key={skill.id} className={`mobile-skill-card ${skill.category}`} onClick={() => handleOrbClick(skill)}>
+            <div className="skill-icon-placeholder">
+              {skill.name.charAt(0)}
+            </div>
+            <div className="skill-info">
+              <h4>{skill.name}</h4>
+              <span className="orbit-badge">{skill.category} orbit</span>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Skill Detail Modal */}

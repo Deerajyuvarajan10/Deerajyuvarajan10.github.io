@@ -6,10 +6,19 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    padding: 20px !important;
+  }
+  .card-header {
+    padding: 15px 20px !important;
+  }
 }
 
 .project-vault {

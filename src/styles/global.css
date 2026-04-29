@@ -8,13 +8,13 @@
   cursor: none; /* Hide default cursor to use custom cursor */
 }
 
-body {
+html, body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
   overflow-x: hidden;
+  width: 100%;
   scroll-behavior: smooth;
-  /* subtle particle background would be added via canvas or layered divs */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -76,4 +76,17 @@ button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  z-index: 2;
+  width: 100%;
+}
+
+.section-header h2 {
+  font-size: clamp(1.2rem, 6vw, 3rem);
+  margin-bottom: 10px;
+  line-height: 1.2;
 }

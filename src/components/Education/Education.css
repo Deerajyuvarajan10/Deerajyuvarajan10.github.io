@@ -121,11 +121,12 @@
 }
 
 .edu-content h3 {
-  font-size: 1.35rem;
+  font-size: clamp(1rem, 5vw, 1.35rem);
   margin-top: 15px;
   margin-bottom: 5px;
   color: var(--color-text);
   line-height: 1.3;
+  word-wrap: break-word;
 }
 
 .major {
@@ -156,10 +157,11 @@
 }
 
 .achievements-grid h3 {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 6vw, 1.8rem);
   margin-bottom: 30px;
   color: var(--color-text);
   text-align: center;
+  word-wrap: break-word;
 }
 
 .badges-container {
@@ -252,4 +254,44 @@
   box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.2);
   pointer-events: none;
   border-radius: 12px;
+}
+
+@media (max-width: 600px) {
+  .holographic-card {
+    max-width: 90vw !important;
+  }
+  .edu-content {
+    padding: 15px !important;
+  }
+  .edu-content h3 {
+    font-size: 1rem !important;
+    word-break: break-word;
+  }
+  .major {
+    font-size: 0.85rem !important;
+  }
+  .edu-meta {
+    font-size: 0.8rem !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .achievements-grid h3 {
+    font-size: 1.4rem !important;
+  }
+  .badges-container {
+    grid-template-columns: 1fr !important;
+  }
+  .achievement-badge {
+    padding: 12px !important;
+    gap: 10px !important;
+    max-width: 90vw !important;
+  }
+  .badge-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .badge-info h4 {
+    font-size: 0.8rem !important;
+  }
 }
