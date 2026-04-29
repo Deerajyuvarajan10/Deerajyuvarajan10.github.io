@@ -69,3 +69,9 @@
   25% { transform: rotate(15deg); transform-origin: bottom center; }
   75% { transform: rotate(-15deg); transform-origin: bottom center; }
 }
+
+@media (max-width: 768px) {
+  .dex-container {
+    display: none !important;
+  }
+}
